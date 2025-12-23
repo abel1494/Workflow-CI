@@ -29,7 +29,10 @@ jobs:
           MLFLOW_TRACKING_USERNAME: ${{ secrets.MLFLOW_TRACKING_USERNAME }}
           MLFLOW_TRACKING_PASSWORD: ${{ secrets.MLFLOW_TRACKING_PASSWORD }}
         run: |
-          # Masuk ke folder MLProject agar MLflow mendeteksi file MLProject lokal
           cd MLProject/
-          # Menggunakan --no-conda agar menggunakan environment yang sudah kita install di atas
-          mlflow run . --no-conda
+          mlflow run . --env-manager local
+
+      - name: Build Docker Image
+        if: success()
+        run: |
+          echo "Build Docker process finished"
