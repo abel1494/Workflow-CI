@@ -7,7 +7,7 @@ import pickle
 import ast
 import os
 
-PATH_DATASET = "Membangun_model/stacksample_preprocessing"
+PATH_DATASET = "stacksample_preprocessing"
 mlflow.set_experiment("StackOverflow_Basic")
 
 def train_basic():
