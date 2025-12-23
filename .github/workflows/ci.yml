@@ -31,8 +31,3 @@ jobs:
         run: |
           cd MLProject/
           mlflow run . --env-manager local
-
-      - name: Build Docker Image
-        if: success()
-        run: |
-          echo "Build Docker process finished"
