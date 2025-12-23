@@ -8,7 +8,6 @@ import ast
 import os
 
 PATH_DATASET = "stacksample_preprocessing"
-mlflow.set_experiment("StackOverflow_Basic")
 
 def train_basic():
     df = pd.read_csv(f'{PATH_DATASET}/clean_data.csv')
@@ -21,10 +20,10 @@ def train_basic():
     y = mlb.transform(df['filtered_tags'])
 
     mlflow.sklearn.autolog()
-    with mlflow.start_run(run_name="SVC_Basic_Autolog"):
-        model = OneVsRestClassifier(LinearSVC())
-        model.fit(X, y)
-        print("Training Basic selesai dan tercatat di MLflow!")
+    model = OneVsRestClassifier(LinearSVC())
+    model.fit(X, y)
+    
+    print("Training Basic selesai dengan Autolog!")
 
 if __name__ == "__main__":
     train_basic()
